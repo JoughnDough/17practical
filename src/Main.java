@@ -95,7 +95,6 @@ public class Main {
             columnModel.getColumn(i).setCellRenderer(centerRenderer);
             columnModel.getColumn(i).setResizable(false);
         }
-
         JFrame frame = new JFrame("");
         frame.add(new JScrollPane(table));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
