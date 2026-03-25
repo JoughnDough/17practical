@@ -134,7 +134,7 @@ public class tryBST {
             } else if (leftNode != null && rightNode != null) {
                 //'node' has both children
                 //Deleted by replacing it with the node of the smallest key in its right subtree
-                //Whilst also removing the original smallest key node, effectively moving it to node's position whilst deleting node
+                //Whilst also removing the original smallest key node, effectively moving the smallest key node on node's right subtree to node's position whilst deleting node
 
                 //Get the node of the smallest key on the right subtree of 'node'
                 //Which is the node that is the furthest left on the right subtree of 'node'
@@ -194,6 +194,21 @@ public class tryBST {
             length--;
 
             return node;
+        }
+
+
+        private void deleteAllEvenKeys(tNode currentNode){
+            while (currentNode != null && currentNode.getKey()%2 == 0)
+                currentNode = delete(currentNode);
+
+            if (currentNode != null) {
+                deleteAllEvenKeys(currentNode.getLeft());
+                deleteAllEvenKeys(currentNode.getRight());
+            }
+        }
+
+        public void deleteAllEvenKeys(){
+            deleteAllEvenKeys(root);
         }
     }
 
