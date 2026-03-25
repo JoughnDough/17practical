@@ -118,7 +118,7 @@ public class tryBST {
             tNode leftNode = node.getLeft();
             tNode rightNode = node.getRight();
 
-            System.out.println("Removed " + node.getKey() + "    " + node.getKey() % 2);
+            //System.out.println("Removed " + node.getKey() + "    " + node.getKey() % 2);
 
             if (leftNode == null && rightNode == null) {
                 //'node' is a leaf node
@@ -242,6 +242,9 @@ public class tryBST {
                 return isBST(root);
         }
 
+        public int size() {
+            return length;
+        }
     }
 
     private static void buildBST(int start, int end, BST tree) {
