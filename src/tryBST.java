@@ -210,6 +210,38 @@ public class tryBST {
         public void deleteAllEvenKeys(){
             deleteAllEvenKeys(root);
         }
+
+
+        private boolean isBST(tNode currentNode) {
+            int currentKey = currentNode.getKey();
+            tNode left = currentNode.getLeft();
+
+            if (left != null) {
+                if (left.getKey() >= currentKey)
+                    return false;
+                else if (!isBST(left))
+                    return false;
+            }
+
+            tNode right = currentNode.getRight();
+
+            if (right != null) {
+                if (right.getKey() < currentKey)
+                    return false;
+                else if (!isBST(right))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public boolean isBST() {
+            if (root == null)
+                return false;
+            else
+                return isBST(root);
+        }
+
     }
 
 }
