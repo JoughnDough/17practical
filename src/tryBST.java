@@ -118,8 +118,6 @@ public class tryBST {
             tNode leftNode = node.getLeft();
             tNode rightNode = node.getRight();
 
-            //System.out.println("Removed " + node.getKey() + "    " + node.getKey() % 2);
-
             if (leftNode == null && rightNode == null) {
                 //'node' is a leaf node
                 //Deleted by disconnecting it from its parent's pointer
@@ -250,11 +248,9 @@ public class tryBST {
     private static void buildBST(int start, int end, BST tree) {
         int middle = (start + end) / 2;
 
-        //System.out.println("Inserted: " + middle);
         tree.insert(middle, "Node " + middle);
 
         if (start != end) {
-            //System.out.println("[" + start + "," + (middle - 1) + "] | [" + (middle + 1) + "," + end + "]");
             buildBST(start, middle - 1, tree);
             buildBST(middle + 1, end, tree);
         }
