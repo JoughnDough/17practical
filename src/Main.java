@@ -34,7 +34,7 @@ public class Main {
             long deleteTime = System.nanoTime() - now;
             timings[i][1] = deleteTime;
             totalDeleteTime += deleteTime;
-            
+
             System.out.println("Build Time: " + buildTime + " Delete Time: " + deleteTime);
         }
 
@@ -44,5 +44,22 @@ public class Main {
 
         System.out.println("Avg build time: " + avgBuildTime * NANO_TO_MILI + "ms");
         System.out.println("Avg delete time: " + avgDeleteTime * NANO_TO_MILI + "ms");
+
+        double stdBuildTime = 0;
+        double stdDeleteTime = 0;
+
+        for (int i = 0; i < NUM_TIMING_TRIALS; i++) {
+            double buildTime = timings[i][0];
+            double deleteTime = timings[i][1];
+
+            stdBuildTime += Math.pow(buildTime - avgBuildTime, 2);
+            stdDeleteTime += Math.pow(deleteTime - avgDeleteTime, 2);
+        }
+
+        stdBuildTime = Math.sqrt(stdBuildTime / (NUM_TIMING_TRIALS - 1));
+        stdDeleteTime = Math.sqrt(stdDeleteTime / (NUM_TIMING_TRIALS - 1));
+
+        System.out.println("Std build time: " + stdBuildTime * NANO_TO_MILI + "ms");
+        System.out.println("Std delete time: " + stdDeleteTime * NANO_TO_MILI + "ms");
     }
 }
