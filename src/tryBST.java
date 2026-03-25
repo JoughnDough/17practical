@@ -244,4 +244,26 @@ public class tryBST {
 
     }
 
+    private static void buildBST(int start, int end, BST tree) {
+        int middle = (start + end) / 2;
+
+        //System.out.println("Inserted: " + middle);
+        tree.insert(middle, "Node " + middle);
+
+        if (start != end) {
+            //System.out.println("[" + start + "," + (middle - 1) + "] | [" + (middle + 1) + "," + end + "]");
+            buildBST(start, middle - 1, tree);
+            buildBST(middle + 1, end, tree);
+        }
+    }
+
+    public static BST buildBST(int n) {
+        BST tree = new BST();
+        int size = (int) Math.pow(2, n) - 1;
+        size = Math.max(size, 1);
+
+        buildBST(1, size, tree);
+        return tree;
+    }
+
 }
